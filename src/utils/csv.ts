@@ -8,7 +8,7 @@ function escapeField(field: string): string {
 }
 
 function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0]!;
+  return date.toISOString().split("T")[0] ?? "";
 }
 
 function formatDatetime(date: Date): string {

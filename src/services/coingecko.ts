@@ -72,7 +72,8 @@ async function fetchPriceRange(
 
   for (const [timestampMs, price] of json.prices) {
     const date = new Date(timestampMs);
-    const dateKey = date.toISOString().split("T")[0]!;
+    const dateKey = date.toISOString().split("T")[0] ?? "";
+    if (!dateKey) continue;
     priceMap[dateKey] = price;
   }
 
@@ -157,7 +158,7 @@ export async function fetchPricesForYear(
 }
 
 export function lookupPrice(prices: PriceMap, date: Date): number | null {
-  const dateKey = date.toISOString().split("T")[0]!;
+  const dateKey = date.toISOString().split("T")[0] ?? "";
   const price = prices[dateKey];
   if (price !== undefined) return price;
 
@@ -165,13 +166,15 @@ export function lookupPrice(prices: PriceMap, date: Date): number | null {
   for (let offset = 1; offset <= 3; offset++) {
     const before = new Date(date);
     before.setDate(before.getDate() - offset);
-    const beforeKey = before.toISOString().split("T")[0]!;
-    if (prices[beforeKey] !== undefined) return prices[beforeKey]!;
+    const beforeKey = before.toISOString().split("T")[0] ?? "";
+    const beforePrice = prices[beforeKey];
+    if (beforePrice !== undefined) return beforePrice;
 
     const after = new Date(date);
     after.setDate(after.getDate() + offset);
-    const afterKey = after.toISOString().split("T")[0]!;
-    if (prices[afterKey] !== undefined) return prices[afterKey]!;
+    const afterKey = after.toISOString().split("T")[0] ?? "";
+    const afterPrice = prices[afterKey];
+    if (afterPrice !== undefined) return afterPrice;
   }
 
   return null;

@@ -90,8 +90,7 @@ export async function fetchAllAddresses(
 ): Promise<{ records: RawCoinRecord[]; address: string }[]> {
   const results: { records: RawCoinRecord[]; address: string }[] = [];
 
-  for (let i = 0; i < puzzleHashes.length; i++) {
-    const entry = puzzleHashes[i]!;
+  for (const [i, entry] of puzzleHashes.entries()) {
     options?.onProgress?.({
       phase: "transactions",
       message: `Fetching transactions for address ${i + 1} of ${puzzleHashes.length}...`,

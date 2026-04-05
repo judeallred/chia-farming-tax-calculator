@@ -40,7 +40,8 @@ async function fetchYearPrices(year: number): Promise<PriceMap> {
 
   for (const [timestampMs, price] of json.prices) {
     const date = new Date(timestampMs);
-    const dateKey = date.toISOString().split("T")[0]!;
+    const dateKey = date.toISOString().split("T")[0] ?? "";
+    if (!dateKey) continue;
     prices[dateKey] = Math.round(price * 100) / 100;
   }
 
@@ -70,7 +71,10 @@ async function main(): Promise<void> {
   // Sort by date key
   const sorted: PriceMap = {};
   for (const key of Object.keys(allPrices).sort()) {
-    sorted[key] = allPrices[key]!;
+    const value = allPrices[key];
+    if (value !== undefined) {
+      sorted[key] = value;
+    }
   }
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(sorted, null, 2));

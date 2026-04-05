@@ -65,7 +65,7 @@ export function processRecords(
       const amountXch = record.coin.amount / MOJOS_PER_XCH;
       const type = detectType(record);
       const autoMining = shouldClassifyAsMining(type);
-      const isMiningIncome = overrides[id] !== undefined ? overrides[id]! : autoMining;
+      const isMiningIncome = overrides[id] ?? autoMining;
       const priceUsd = lookupPrice(prices, date);
       const valueFmvUsd = priceUsd !== null ? amountXch * priceUsd : null;
 
