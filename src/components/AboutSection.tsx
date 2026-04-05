@@ -50,14 +50,33 @@ export default function AboutSection() {
           <p>
             <strong>Chia Farming Tax Calculator</strong> is a free, open-source, client-side tool
             for calculating Chia (XCH) farming income taxes. All data processing happens
-            in your browser — nothing is sent to any server beyond the CoinGecko and Coinset.org
-            public APIs.
+            in your browser — nothing is sent to any server beyond the Coinset.org public API.
           </p>
 
           <div className="rounded-lg bg-amber-50 border border-amber-200 p-3 text-amber-800 text-xs">
             <strong>Disclaimer:</strong> This tool does not provide tax, legal, or accounting advice.
             All information is for informational purposes only. Consult a qualified professional
             for your specific situation.
+          </div>
+
+          <div>
+            <p className="font-medium text-gray-700 mb-1">How Fair Market Value Is Calculated</p>
+            <p>
+              Each incoming transaction is matched to the daily closing price of XCH in USD on the
+              date it was confirmed on-chain. Prices are sourced from{" "}
+              <a
+                href="https://www.cryptocompare.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-600 hover:text-emerald-700 underline"
+              >
+                CryptoCompare
+              </a>
+              {" "}and bundled into the app at build time — no runtime API calls are made for price
+              data. If a price is unavailable for the exact date, the nearest available price within
+              3 days is used. The fair market value is then calculated as the amount of XCH received
+              multiplied by that day's closing price.
+            </p>
           </div>
 
           <div>
