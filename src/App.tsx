@@ -1,12 +1,11 @@
 import { useState, useCallback, useRef } from "react";
-import type { Transaction, FetchProgress, ApiKeys, PriceMap } from "./types";
+import type { Transaction, FetchProgress, PriceMap } from "./types";
 import AddressInput from "./components/AddressInput";
 import TaxYearSelector, { getDefaultTaxYear } from "./components/TaxYearSelector";
 import TransactionTable from "./components/TransactionTable";
 import Summary from "./components/Summary";
 import ExportButton from "./components/ExportButton";
 import ProgressPanel from "./components/ProgressPanel";
-import ApiSettings from "./components/ApiSettings";
 import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 import { addressToPuzzleHash } from "./services/addressCodec";
@@ -18,7 +17,6 @@ import { processRecords } from "./utils/mining";
 export default function App() {
   const [addresses, setAddresses] = useState<string[]>([]);
   const [taxYear, setTaxYear] = useState<number>(getDefaultTaxYear);
-  const [apiKeys, setApiKeys] = useState<ApiKeys>({});
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [progress, setProgress] = useState<FetchProgress | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +47,6 @@ export default function App() {
 
         // Fetch coin records from coinset.org
         const allResults = await fetchAllAddresses(puzzleHashes, {
-          apiKey: apiKeys.coinset,
           forceRefresh,
           taxYear,
           onProgress: setProgress,
@@ -112,7 +109,7 @@ export default function App() {
         setIsLoading(false);
       }
     },
-    [addresses, taxYear, apiKeys],
+    [addresses, taxYear],
   );
 
   const handleMiningToggle = useCallback((id: string, value: boolean) => {
@@ -154,14 +151,9 @@ export default function App() {
           </div>
         )}
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-4">
-            <AddressInput onChange={setAddresses} />
-            <TaxYearSelector value={taxYear} onChange={setTaxYear} />
-          </div>
-          <div>
-            <ApiSettings onChange={setApiKeys} />
-          </div>
+        <div className="space-y-4">
+          <AddressInput onChange={setAddresses} />
+          <TaxYearSelector value={taxYear} onChange={setTaxYear} />
         </div>
 
         <div className="flex flex-wrap items-center gap-3">

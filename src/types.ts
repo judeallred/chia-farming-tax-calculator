@@ -39,9 +39,6 @@ export interface CachedData<T> {
   fetchedAt: number;
 }
 
-export interface ApiKeys {
-  coinset?: string;
-}
 
 export interface FetchProgress {
   phase: "transactions" | "prices" | "analyzing";

@@ -7,7 +7,7 @@ Documents how the app fetches Chia blockchain transaction data from coinset.org.
 ## Key Concepts
 
 - **Endpoint:** `POST https://api.coinset.org/get_coin_records_by_puzzle_hash`
-- **Auth:** None required (public API). Optional API key slot reserved for future use.
+- **Auth:** None required (public API).
 - **Data model:** Chia uses a UTXO-like "coin set" model. Each coin has a puzzle hash (≈ address), an amount in mojos, and metadata including a `coinbase` boolean.
 
 ## File Map

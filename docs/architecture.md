@@ -6,8 +6,8 @@ High-level system overview of ChiaMiningTaxCalculator — a static, client-side 
 
 ## Key Concepts
 
-- **No backend.** All processing happens in the browser. API calls go directly from the client to coinset.org and CoinGecko.
-- **CORS-compatible.** Both APIs support cross-origin requests, enabling the static-site approach.
+- **No backend.** All processing happens in the browser. API calls go directly from the client to coinset.org; price data is bundled statically.
+- **CORS-compatible.** The coinset.org API supports cross-origin requests, enabling the static-site approach.
 - **Static hosting.** The built `dist/` folder deploys to GitHub Pages (or any static host).
 
 ## Data Flow
@@ -18,8 +18,7 @@ flowchart TD
     B --> C[Coinset.org: get_coin_records_by_puzzle_hash]
     C --> D[Raw coin records]
     D --> E[Mining detection engine]
-    F[CoinGecko: market_chart/range] --> G[Daily price map]
-    H[Bundled xch-usd-daily.json] --> G
+    H[Bundled xch-usd-daily.json] --> G[Daily price map]
     E --> I[Classified transactions]
     G --> I
     I --> J[TransactionTable + Summary]
@@ -34,7 +33,6 @@ App
 ├── AboutSection (collapsible)
 ├── AddressInput
 ├── TaxYearSelector
-├── ApiSettings (collapsible)
 ├── Action buttons (Calculate, Refresh, Export)
 ├── ProgressPanel
 ├── Summary
@@ -54,7 +52,7 @@ App
 
 ## Data Shapes
 
-- **App state** — addresses, tax year, API keys, mining overrides, and derived `Transaction[]` live in React state (`src/App.tsx`); shared interfaces are in `src/types.ts`.
+- **App state** — addresses, tax year, mining overrides, and derived `Transaction[]` live in React state (`src/App.tsx`); shared interfaces are in `src/types.ts`.
 - **Raw chain data** — `RawCoinRecord[]` from coinset.org ([api-coinset.md](./api-coinset.md)).
 - **Prices** — `PriceMap` (`YYYY-MM-DD` → USD) from CoinGecko and/or bundled JSON ([api-coingecko.md](./api-coingecko.md)).
 
@@ -62,7 +60,7 @@ App
 
 - The app deduplicates transactions by coin ID when multiple addresses overlap
 - Puzzle hashes are hex-encoded (no `0x` prefix) internally but sent with `0x` to coinset.org
-- CoinGecko free tier limits historical data to 365 days; bundled data fills the gap
+- Price data is bundled statically; run `npm run update-prices` to refresh
 
 ## Extension Points
 

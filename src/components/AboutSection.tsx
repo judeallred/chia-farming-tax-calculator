@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const REPO_URL = "https://github.com/blinkymach12/ChiaMiningTaxCalculator";
+const REPO_URL = "https://github.com/judeallred/chia-mining-tax-calculator";
 
 export default function AboutSection() {
   const [open, setOpen] = useState(false);

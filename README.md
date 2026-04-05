@@ -2,23 +2,23 @@
 
 Free, open-source, client-side Chia (XCH) farming/mining tax calculator. Calculate cost basis and generate IRS-ready CSV reports — all in your browser.
 
-**[Live Demo →](https://blinkymach12.github.io/ChiaMiningTaxCalculator/)**
+**[Live Demo →](https://judeallred.github.io/chia-mining-tax-calculator/)**
 
 ## Features
 
 - **Multi-wallet support** — Input one or more XCH wallet addresses
 - **Automatic mining detection** — Identifies farming rewards (coinbase) and pool payouts
-- **Cost basis calculation** — XCH/USD prices from CoinGecko at time of receipt
+- **Cost basis calculation** — XCH/USD prices from bundled historical data at time of receipt
 - **Tax year filtering** — Select a specific tax year (2021–present)
 - **CSV export** — IRS Schedule 1/C format and Koinly Universal format
 - **Privacy-first** — All processing happens in your browser. No data is sent to any server.
-- **Offline-capable** — Bundled historical price data as fallback
+- **Offline-capable** — Bundled historical price data, no runtime API calls for prices
 - **Resilient** — Automatic retries with exponential backoff for API calls
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/blinkymach12/ChiaMiningTaxCalculator.git
+git clone https://github.com/judeallred/chia-mining-tax-calculator.git
 cd ChiaMiningTaxCalculator
 npm install
 npm run dev
@@ -38,13 +38,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ## Data Sources
 
 - **[Coinset.org](https://coinset.org)** — Chia blockchain transaction data
-- **[CoinGecko](https://www.coingecko.com)** — Historical XCH/USD price data
-
-## API Limitations
-
-The CoinGecko free tier restricts historical data to the past 365 days. For older tax years:
-- Bundled price data is used as a fallback
-- You can provide your own CoinGecko API key in the API Settings panel
+- **[CryptoCompare](https://www.cryptocompare.com)** — Historical XCH/USD price data (bundled at build time)
 
 ## Deploying to GitHub Pages
 

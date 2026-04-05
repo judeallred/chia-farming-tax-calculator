@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 
-const TIP_ADDRESS = "xch1dh6udwjex75qdtp8jtedx70a87r5r0hzrc0wwwdh9k3g8k83arfqjdcmw0";
+const TIP_ADDRESS = "xch1dltucau5fpq60p88w9qp0smcxny2yu5ypfncwzvslqvy32cr5w8sw76pmr";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -11,7 +12,6 @@ export default function Footer() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback
       const el = document.createElement("textarea");
       el.value = TIP_ADDRESS;
       document.body.appendChild(el);
@@ -29,16 +29,16 @@ export default function Footer() {
         <p className="text-sm text-gray-600 mb-4">
           Made with 🌱 by{" "}
           <a
-            href="https://github.com/blinkymach12"
+            href="https://github.com/judeallred"
             target="_blank"
             rel="noopener noreferrer"
             className="text-emerald-600 hover:text-emerald-700 font-medium"
           >
-            @blinkymach12
+            @judeallred
           </a>
         </p>
 
-        <div className="inline-flex flex-col items-center gap-2">
+        <div className="inline-flex flex-col items-center gap-3">
           <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
             Tip Jar
           </span>
@@ -52,6 +52,14 @@ export default function Footer() {
             >
               {copied ? "Copied!" : "Copy"}
             </button>
+          </div>
+          <div className="rounded-lg border border-gray-200 bg-white p-2">
+            <QRCodeSVG
+              value={TIP_ADDRESS}
+              size={120}
+              level="M"
+              fgColor="#065f46"
+            />
           </div>
         </div>
       </div>

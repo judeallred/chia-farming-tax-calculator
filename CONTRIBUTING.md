@@ -5,7 +5,7 @@ Thank you for your interest in contributing! This project is open source and we 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/ChiaMiningTaxCalculator.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/chia-mining-tax-calculator.git`
 3. Install dependencies: `npm install`
 4. Start the dev server: `npm run dev`
 

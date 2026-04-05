@@ -13,7 +13,6 @@ interface CoinsetResponse {
 export async function fetchCoinRecordsByPuzzleHash(
   puzzleHash: string,
   options?: {
-    apiKey?: string;
     forceRefresh?: boolean;
     taxYear?: number;
     onProgress?: (progress: FetchProgress) => void;
@@ -39,9 +38,6 @@ export async function fetchCoinRecordsByPuzzleHash(
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
-  if (options?.apiKey) {
-    headers["x-api-key"] = options.apiKey;
-  }
 
   const body = JSON.stringify({
     puzzle_hash: `0x${puzzleHash}`,
@@ -82,7 +78,6 @@ export async function fetchCoinRecordsByPuzzleHash(
 export async function fetchAllAddresses(
   puzzleHashes: { puzzleHash: string; address: string }[],
   options?: {
-    apiKey?: string;
     forceRefresh?: boolean;
     taxYear?: number;
     onProgress?: (progress: FetchProgress) => void;
@@ -99,7 +94,6 @@ export async function fetchAllAddresses(
     });
 
     const records = await fetchCoinRecordsByPuzzleHash(entry.puzzleHash, {
-      apiKey: options?.apiKey,
       forceRefresh: options?.forceRefresh,
       taxYear: options?.taxYear,
       onProgress: options?.onProgress,

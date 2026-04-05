@@ -23,7 +23,6 @@ Documents the localStorage-based caching layer that persists user state and API 
 |---|---|---|---|
 | `chiatax:addresses` | `string[]` | N/A (user pref) | N/A |
 | `chiatax:taxYear` | `number` | N/A (user pref) | N/A |
-| `chiatax:apiKeys` | `ApiKeys` | N/A (user pref) | N/A |
 | `chiatax:miningOverrides` | `Record<string, boolean>` | N/A (user pref) | N/A |
 | `chiatax:coins:<puzzleHash>` | `CachedData<RawCoinRecord[]>` | 1 hour | Never stale |
 
@@ -53,7 +52,7 @@ localStorage typically has a 5-10 MB quota. When a write fails:
 
 ## Edge Cases and Gotchas
 
-- User preferences (addresses, tax year, API keys, overrides) are never evicted
+- User preferences (addresses, tax year, overrides) are never evicted
 - The cache module silently swallows parse errors for corrupted entries
 - `clearCacheForQuery()` is called when the user clicks "Refresh Data"
 - Each puzzle hash gets its own cache entry (avoids one large wallet crowding out others)

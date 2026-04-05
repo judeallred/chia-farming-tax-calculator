@@ -19,7 +19,7 @@ Documents how Chia wallet addresses (`xch1...`) are converted to puzzle hashes f
 
 | Format | Example |
 |--------|---------|
-| XCH Address | `xch1dh6udwjex75qdtp8jtedx70a87r5r0hzrc0wwwdh9k3g8k83arfqjdcmw0` |
+| XCH Address | `xch1dltucau5fpq60p88w9qp0smcxny2yu5ypfncwzvslqvy32cr5w8sw76pmr` |
 | Puzzle Hash (hex) | `6df4e35a593bd40356139796e937dfa7e1d06fb90787b9ce6dcb688a3b1e8d24` |
 | Puzzle Hash (API) | `0x6df4e35a593bd40356139796e937dfa7e1d06fb90787b9ce6dcb688a3b1e8d24` |
 

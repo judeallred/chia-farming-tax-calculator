@@ -1,4 +1,4 @@
-import type { CachedData, ApiKeys } from "../types";
+import type { CachedData } from "../types";
 
 const PREFIX = "chiatax:";
 const COINS_TTL_CURRENT_YEAR = 60 * 60 * 1000; // 1 hour
@@ -77,14 +77,6 @@ export function getTaxYear(): number | null {
 
 export function setTaxYear(year: number): void {
   safeSet(key("taxYear"), year);
-}
-
-export function getApiKeys(): ApiKeys {
-  return safeGet<ApiKeys>(key("apiKeys")) ?? {};
-}
-
-export function setApiKeys(keys: ApiKeys): void {
-  safeSet(key("apiKeys"), keys);
 }
 
 export function getMiningOverrides(): Record<string, boolean> {
