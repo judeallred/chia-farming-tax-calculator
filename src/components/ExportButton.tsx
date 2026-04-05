@@ -25,13 +25,13 @@ export default function ExportButton({ transactions, taxYear }: ExportButtonProp
 
   function handleIrs() {
     const csv = generateIrsCsv(transactions);
-    downloadCsv(csv, `chia-mining-income-${taxYear}-irs.csv`);
+    downloadCsv(csv, `chia-farming-income-${taxYear}-irs.csv`);
     setOpen(false);
   }
 
   function handleKoinly() {
     const csv = generateKoinlyCsv(transactions);
-    downloadCsv(csv, `chia-mining-income-${taxYear}-koinly.csv`);
+    downloadCsv(csv, `chia-farming-income-${taxYear}-koinly.csv`);
     setOpen(false);
   }
 

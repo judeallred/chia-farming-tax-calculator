@@ -103,7 +103,7 @@ export default function TransactionTable({ transactions, onMiningToggle }: Trans
         ),
       }),
       columnHelper.accessor("isMiningIncome", {
-        header: "Mining Income",
+        header: "Farming Income",
         cell: (info) => (
           <input
             type="checkbox"

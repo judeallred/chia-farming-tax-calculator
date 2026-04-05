@@ -17,12 +17,12 @@ export default function Summary({ transactions, taxYear }: SummaryProps) {
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-6">
       <h2 className="text-lg font-semibold text-gray-900 mb-4">
-        {taxYear} Mining Income Summary
+        {taxYear} Farming Income Summary
       </h2>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div>
-          <p className="text-sm text-gray-500">Total Mining Income</p>
+          <p className="text-sm text-gray-500">Total Farming Income</p>
           <p className="text-2xl font-bold text-emerald-600">{formatUsd(totalUsd)}</p>
         </div>
         <div>
@@ -47,7 +47,7 @@ export default function Summary({ transactions, taxYear }: SummaryProps) {
       )}
 
       <p className="mt-4 text-xs text-gray-400">
-        All {transactions.length} incoming transactions shown. {miningTxs.length} classified as mining income.
+        All {transactions.length} incoming transactions shown. {miningTxs.length} classified as farming income.
       </p>
     </div>
   );

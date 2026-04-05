@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
-const REPO_URL = "https://github.com/judeallred/chia-mining-tax-calculator";
+const REPO_URL = "https://github.com/judeallred/chia-farming-tax-calculator";
 const TIP_ADDRESS = "xch1dltucau5fpq60p88w9qp0smcxny2yu5ypfncwzvslqvy32cr5w8sw76pmr";
 
 export default function AboutSection() {
@@ -48,8 +48,8 @@ export default function AboutSection() {
       {open && (
         <div className="border-t border-gray-200 px-4 py-4 space-y-4 text-sm text-gray-600">
           <p>
-            <strong>Chia Mining Tax Calculator</strong> is a free, open-source, client-side tool
-            for calculating Chia (XCH) farming/mining income taxes. All data processing happens
+            <strong>Chia Farming Tax Calculator</strong> is a free, open-source, client-side tool
+            for calculating Chia (XCH) farming income taxes. All data processing happens
             in your browser — nothing is sent to any server beyond the CoinGecko and Coinset.org
             public APIs.
           </p>
